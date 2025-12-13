@@ -1,0 +1,10 @@
+
+Project: CMS-Client
+
+1.Re-arrange: project structure
+    ☐ Is the website using a server component or a client component?
+    ☐ Create project structure, model, global store
+    ☐ Design location where using the RestFull API and Postpack refer  [app\api\auth\login\route.ts]
+    ☐ Create current user login (global to get for every api) 
+    ☐ Use full feature of typescript type like Union, Intersection, Enum, (constant value)
+
