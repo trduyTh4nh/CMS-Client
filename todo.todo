@@ -7,4 +7,6 @@ Project: CMS-Client
     ☐ Design location where using the RestFull API and Postpack refer  [app\api\auth\login\route.ts]
     ☐ Create current user login (global to get for every api) 
     ☐ Use full feature of typescript type like Union, Intersection, Enum, (constant value)
-
+    ☐ Create page show when error popup
+    ☐ Tạo common handle return exception with format 
+    

@@ -18,16 +18,10 @@ export async function POST(req: Request) {
     }
 
     const data = await res.json();
-    console.log("Login API Response:", data);
-
-
     const response = new NextResponse(JSON.stringify({ user: data.user }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
-
-    console.log("Response headers:", data.metadata.access_token);
-    console.log("Setting cookie with access_token:", data.metadata.access_token);
 
     response.cookies.set("access_token", data.metadata.access_token, {
       httpOnly: true,
