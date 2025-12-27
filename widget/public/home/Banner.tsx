@@ -10,7 +10,6 @@ import {
 
 export default async function Banner() {
     const banners = await getBanners();
-    console.log("banners: ", banners)
     return (
         <div className="banner w-full">
             <Carousel>

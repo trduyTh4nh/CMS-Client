@@ -3,7 +3,6 @@ import Link from "next/link";
 
 
 export default function Header({ user, headerType }: { user: any, headerType?: string }) {
-    console.log("Header user:", user);
     var isAuthenticated = user != null;
     return (
         headerType != null && headerType !== "admin" ? (

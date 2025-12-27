@@ -14,9 +14,6 @@ export async function GET(req: Request) {
     }
 
     const data = await res.json();
-
-    console.log("Media response: ", data);
-
     return res;
     
   } catch (error) {
