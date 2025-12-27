@@ -10,9 +10,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    console.log("Creating banner with body:", body);
-    console.log("Using token:", token);
-
     const res = await fetch(`${process.env.BACKEND_URL}/media`, {
       method: "POST",
       headers: {
@@ -27,7 +24,7 @@ export async function POST(req: Request) {
       console.error("Banner API Error:", error);
       return NextResponse.json(
         error,
-        { status: res.status } // ✅ GIỮ NGUYÊN
+        { status: res.status } 
       );
     }
 

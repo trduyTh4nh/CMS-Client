@@ -23,12 +23,7 @@ const BannerPage = () => {
             // Reset form or show success message
             setFormData({ post_id: "", url: "" });
         }
-
-
     };
-
-
-
     return (
         <div className="p-4">
             <h1>Add Banner</h1>

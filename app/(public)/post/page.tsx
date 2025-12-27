@@ -1,6 +1,4 @@
 
-
-
 const PostPage = async () => {
     return (
         <div className="post-page">

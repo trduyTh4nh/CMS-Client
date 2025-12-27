@@ -30,6 +30,5 @@ export default async function Banner() {
                 </CarouselContent>
             </Carousel>
         </div>
-
     );
 }
