@@ -1,19 +1,18 @@
+import { getUser } from "@/lib/auth";
 import PostForm from "./PostForm";
 import PostList from "./PostList";
 import "./post-management.css";
 
-const PostManagementPage = () => {
+const PostManagementPage = async () => {
+  const user = await getUser();
   return (
     <main className="post-management">
-      <section className="post-list-section">
-        <h2>Posts</h2>
-        <PostList />
-      </section>
+      <PostList />
 
-      <section className="post-form-section">
+      {/* <section className="post-form-section">
         <h2>Create / Edit Post</h2>
-        <PostForm />
-      </section>
+        <PostForm user={user} />
+      </section>  */}
     </main>
   );
 };

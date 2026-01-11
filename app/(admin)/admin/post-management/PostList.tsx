@@ -15,10 +15,10 @@ export default async function PostList() {
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody className="">
                 {posts.map((post) => (
                     <tr key={post.id}>
-                        <td>{post.title}</td>
+                        <td >{post.title}</td>
 
                         <td>
                             <span className={`status ${post.status.toLowerCase()}`}>
@@ -28,9 +28,8 @@ export default async function PostList() {
 
                         <td>{post.view_count}</td>
 
-                        <td>
-                            <button className="btn btn-edit">Edit</button>
-                            <button className="btn btn-delete">Delete</button>
+                        <td className="">
+                            <button className="btn btn-edit bg-green-600 rounded-2xl">Publish</button>
                         </td>
                     </tr>
                 ))}

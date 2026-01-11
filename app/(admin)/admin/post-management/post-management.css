@@ -1,6 +1,5 @@
 .post-management {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
   gap: 24px;
   padding: 24px;
 }
@@ -85,4 +84,10 @@
 
 .btn-delete {
   color: red;
+}
+
+.body-post td {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

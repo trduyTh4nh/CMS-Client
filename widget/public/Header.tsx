@@ -26,9 +26,6 @@ export default function Header({ user, headerType }: { user: any, headerType?: s
                 <div>DevForge Admin</div>
                 {user ? (
                     <div className="flex gap-4">
-                        <Link href="/">Home</Link>
-                        <Link href="/post">Post</Link>
-                        <Link href="/qanda">Q&A</Link>
                         <Link href="/admin/banner-management">Banner</Link>
                         <Link href="/admin/post-management">Post</Link>
                     </div>

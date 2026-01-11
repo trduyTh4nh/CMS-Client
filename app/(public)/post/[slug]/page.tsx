@@ -2,6 +2,7 @@ import { getPostBySlug } from "@/services/post.service";
 import PostContent from "./PostContent";
 import Toc from "./Toc";
 import "./post-detail.css";
+import PostComments from "./PostComment";
 
 export default async function Page({
     params,
@@ -31,6 +32,9 @@ export default async function Page({
                 </div>
 
                 <PostContent content={postDetail.content} />
+
+                {/* 👇 COMMENT SECTION */}
+                <PostComments postId={postDetail.id} />
             </article>
 
             <aside className="post-toc">
