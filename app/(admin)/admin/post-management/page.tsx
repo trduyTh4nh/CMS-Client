@@ -9,10 +9,10 @@ const PostManagementPage = async () => {
     <main className="post-management">
       <PostList />
 
-      {/* <section className="post-form-section">
+      <section className="post-form-section">
         <h2>Create / Edit Post</h2>
         <PostForm user={user} />
-      </section>  */}
+      </section> 
     </main>
   );
 };

@@ -1,7 +1,7 @@
 // app/(public)/layout.tsx - PUBLIC LAYOUT (sửa lại)
 import type { Metadata } from "next";
 import { getUser } from "@/lib/auth";
-import Header from "@/widget/public/Header";
+import Header from "@/widget/public/homeWidget/Header";
 
 export const metadata: Metadata = {
   title: "Welcome to CMS",

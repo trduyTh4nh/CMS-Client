@@ -1,11 +1,38 @@
 // app/layout.tsx - ROOT LAYOUT (mới)
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
 
-const inter = Inter({
-    subsets: ["latin", "vietnamese"],
-    variable: "--font-inter",
+export const sharpGrotesk = localFont({
+    src: [
+        {
+            path: "./fonts/SharpGrotesk-Thin20.otf",
+            weight: "300",
+            style: "normal",
+        },
+        {
+            path: "./fonts/SharpGrotesk-Light20.otf",
+            weight: "400",
+            style: "normal",
+        },
+        {
+            path: "./fonts/SharpGrotesk-Medium20.otf",
+            weight: "500",
+            style: "normal",
+        },
+        {
+            path: "./fonts/SharpGrotesk-SemiBold20.otf",
+            weight: "600",
+            style: "normal",
+        },
+        {
+            path: "./fonts/SharpGrotesk-Bold20.otf",
+            weight: "700",
+            style: "normal",
+        },
+    ],
+    variable: "--font-grotesk",
+    display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -21,8 +48,11 @@ export default function RootLayout({
     return (
         <html
             suppressHydrationWarning
-            lang="en" className={inter.variable}>
-            <body className="font-sans antialiased">
+            lang="en"
+        >
+            <body
+                className={sharpGrotesk.className}
+            >
                 {children}
             </body>
         </html>

@@ -6,8 +6,6 @@ const PostPage = async () => {
     const posts = await getPosts();
     return (
         <main className="post-page">
-            <h1>Posts</h1>
-
             {posts.length === 0 ? (
                 <p>No posts found.</p>
             ) : (

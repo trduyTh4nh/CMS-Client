@@ -2,6 +2,7 @@
   display: grid;
   gap: 24px;
   padding: 24px;
+  margin: 2rem auto;
 }
 
 .post-list-section,

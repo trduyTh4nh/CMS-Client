@@ -23,20 +23,13 @@ export default function LoginPage() {
 
         if (res.ok) window.location.href = "/";
     };
+    window.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            handleSubmit(e);
+        }
+    });
 
     return (
-        // <form onSubmit={handleSubmit} className="p-4">
-        //     <input
-        //         placeholder="Email"
-        //         onChange={(e) => setForm({ ...form, email: e.target.value })}
-        //     />
-        //     <input
-        //         placeholder="Password"
-        //         type="password"
-        //         onChange={(e) => setForm({ ...form, password: e.target.value })}
-        //     />
-        //     <button type="submit">Login</button>
-        // </form>
         <div className="login-page w-full h-[90vh] flex justify-center items-center">
             <Card className="w-full max-w-sm">
                 <CardHeader>
@@ -77,7 +70,7 @@ export default function LoginPage() {
                     </form>
                 </CardContent>
                 <CardFooter className="flex-col gap-2">
-                    <Button type="submit" className="w-full">
+                    <Button type="submit" onClick={handleSubmit} className="w-full">
                         Login
                     </Button>
                     <Button variant="outline" className="w-full">
