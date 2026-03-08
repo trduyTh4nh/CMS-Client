@@ -1,0 +1,35 @@
+.post-page {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 24px;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.post-title {
+  margin: 0 0 8px;
+}
+
+.post-title a {
+  text-decoration: none;
+  color: #111;
+}
+
+.post-title a:hover {
+  text-decoration: underline;
+}
+
+.post-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  color: #666;
+}

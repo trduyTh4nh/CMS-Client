@@ -9,4 +9,6 @@ Project: CMS-Client
     ☐ Use full feature of typescript type like Union, Intersection, Enum, (constant value)
     ☐ Create page show when error popup
     ☐ Tạo common handle return exception with format 
-    
+
+    ☐ re-make sample ui
+    ☐ get all tag category

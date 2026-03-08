@@ -1,0 +1,94 @@
+.post-management {
+  display: grid;
+  gap: 24px;
+  padding: 24px;
+  margin: 2rem auto;
+}
+
+.post-list-section,
+.post-form-section {
+  border: 1px solid #eee;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.status.draft {
+  color: orange;
+}
+
+.status.published {
+  color: green;
+}
+
+.post-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.post-form input,
+.post-form textarea,
+.post-form select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.post-form button {
+  margin-top: 12px;
+  padding: 10px;
+}
+
+.post-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.post-table th,
+.post-table td {
+  border: 1px solid #eee;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.post-table th {
+  background: #f9f9f9;
+  font-weight: 600;
+}
+
+.status.draft {
+  color: orange;
+}
+
+.status.published {
+  color: green;
+}
+
+.btn {
+  padding: 4px 8px;
+  margin-right: 6px;
+  font-size: 14px;
+}
+
+.btn-delete {
+  color: red;
+}
+
+.body-post td {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
