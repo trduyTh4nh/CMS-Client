@@ -31,9 +31,8 @@ export default async function Page({
                     </span>
                 </div>
 
-                <PostContent content={postDetail.content} />
+                <PostContent postId={postDetail.id} content={postDetail.content} />
 
-                {/* 👇 COMMENT SECTION */}
                 <PostComments postId={postDetail.id} />
             </article>
 

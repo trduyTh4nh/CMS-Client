@@ -1,8 +1,8 @@
-import { getPosts } from "@/services/post.service";
+import { getAllPosts } from "@/services/post.service";
 import "./post-management.css";
 
 export default async function PostList() {
-    const posts = await getPosts();
+    const posts = await getAllPosts();
 
     return (
         <table className="post-table">

@@ -2,8 +2,22 @@ import Link from "next/link";
 import { getPosts } from "@/services/post.service";
 import "./post.css";
 
-const PostPage = async () => {
-    const posts = await getPosts();
+type Props = {
+    searchParams: Promise<{
+        tag?: string;
+    }>;
+}
+
+const Post = async ({ searchParams }: Props) => {
+    const params = await searchParams;
+    const tagId = params.tag;
+    let posts = [];
+    if (tagId) {
+        posts = await getPosts("tag", tagId);
+    } else {
+        posts = await getPosts();
+    };
+
     return (
         <main className="post-page">
             {posts.length === 0 ? (
@@ -35,4 +49,4 @@ const PostPage = async () => {
     );
 };
 
-export default PostPage;
+export default Post;

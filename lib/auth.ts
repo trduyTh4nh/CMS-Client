@@ -8,11 +8,14 @@ export async function getUser() {
   try {
     const { payload } = await jwtVerify(
       token,
-      new TextEncoder().encode(process.env.JWT_SECRET)
+      new TextEncoder().encode(process.env.JWT_SECRET),
     );
     return payload.user;
-    
   } catch (err) {
     return null;
   }
+}
+
+export async function getToken() {
+  return (await cookies()).get("access_token")?.value;
 }

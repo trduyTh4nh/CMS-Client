@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { postSchema, PostFormValues } from "./post.schema";
 import { Editor } from "@tinymce/tinymce-react";
 import { useEffect } from "react";
+import { createPostFromClient } from "@/services/post.service";
 
 export default function PostForm({ user }: { user: any }) {
   const {
@@ -35,17 +36,7 @@ export default function PostForm({ user }: { user: any }) {
   const title = watch("title");
 
   const onSubmit = async (data: PostFormValues) => {
-    console.log("✅ Submit post:", data);
-
-    const res = await fetch("/api/post", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-
-    if (res.ok) {
-      console.log("Post created successfully");
-    }
+    await createPostFromClient(data);
   };
 
   return (

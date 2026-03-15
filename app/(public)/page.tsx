@@ -5,6 +5,7 @@ import BannerV2 from "@/widget/public/homeWidget/BannerV2";
 export default async function Home() {
 
   const tags = await getAllTag()
+  
   return (
     <div className="flex min-h-screen justify-center bg-zinc-50 font-sans">
       {/* <Banner></Banner> */}

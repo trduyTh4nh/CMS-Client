@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     if (!res.ok) {
       return NextResponse.json(
         { message: "Invalid credentials" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -25,8 +25,9 @@ export async function POST(req: Request) {
 
     response.cookies.set("access_token", data.metadata.access_token, {
       httpOnly: true,
-      secure: false,
+      secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 7,
       path: "/",
     });
 
@@ -35,7 +36,7 @@ export async function POST(req: Request) {
     console.error("Login API Error:", err);
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

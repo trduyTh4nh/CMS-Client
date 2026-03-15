@@ -4,7 +4,7 @@ import { getUser } from "@/lib/auth";
 import Header from "@/widget/public/homeWidget/Header";
 
 export const metadata: Metadata = {
-  title: "Welcome to CMS",
+  title: "Devforge",
   description: "Public website",
 };
 

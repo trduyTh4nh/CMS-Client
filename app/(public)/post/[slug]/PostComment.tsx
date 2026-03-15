@@ -14,7 +14,6 @@ export default async function PostComments({ postId }: { postId: string }) {
     if (!user) {
         redirect("/unauthorized");
     }
-    console.log("PostComments - user: ", user)
     return (
         <section className="post-comments">
             <CommentForm postId={postId} user={user} />

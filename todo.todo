@@ -12,3 +12,9 @@ Project: CMS-Client
 
     ☐ re-make sample ui
     ☐ get all tag category
+
+// NEW
+2. Home 
+    ☐ Create home page following the design (mockup\home.excalidraw)
+    ☐ Refactor các function service, create 1 http riêng để config request không dùng fetch ở mỗi file (services\post.ts)...
+    ☐ Design api for home page + design UI for Q and A page
