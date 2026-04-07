@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -22,11 +22,18 @@ const LoginForm = () => {
 
         if (res.ok) window.location.href = "/";
     };
-    window.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-            handleSubmit(e);
+
+    useEffect(() => {
+        const handleKeyDown = (e: any) => {
+            if (e.key === "Enter") {
+                handleSubmit(e);
+            }
         }
-    });
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        }
+    }, [])
 
     return (
         <Card className="w-full max-w-sm">

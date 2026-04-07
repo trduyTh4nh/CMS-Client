@@ -18,3 +18,5 @@ Project: CMS-Client
     ☐ Create home page following the design (mockup\home.excalidraw)
     ☐ Refactor các function service, create 1 http riêng để config request không dùng fetch ở mỗi file (services\post.ts)...
     ☐ Design api for home page + design UI for Q and A page
+    ☐ Setup S3
+        Refer this link: https://viblo.asia/p/setup-boilerplate-cho-du-an-nestjs-phan-11-upload-public-file-tu-co-ban-toi-toi-uu-voi-aws-sdk-v3-va-ataws-sdklib-storage-aNj4vx3OL6r

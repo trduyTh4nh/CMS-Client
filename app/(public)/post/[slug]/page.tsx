@@ -1,4 +1,4 @@
-import { getPostBySlug } from "@/services/post.service";
+import { getPostBySlug } from "@/services/post/post-sever.service";
 import PostContent from "./PostContent";
 import Toc from "./Toc";
 import "./post-detail.css";
@@ -21,7 +21,8 @@ export default async function Page({
     return (
         <main className="post-detail">
             <article className="post-main">
-                <h1>{postDetail.title}</h1>
+                <h1 className="text-4xl font-bold">{postDetail.title}</h1>
+                <img src={postDetail.medias?.[0]?.url} alt={postDetail.title} />
 
                 <div className="post-meta">
                     <span>Views: {postDetail.view_count}</span>

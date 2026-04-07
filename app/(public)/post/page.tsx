@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPosts } from "@/services/post.service";
+import { getPosts } from "@/services/post/post-sever.service";
 import "./post.css";
 
 type Props = {

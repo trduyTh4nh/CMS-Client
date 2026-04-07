@@ -13,6 +13,10 @@ import { usePathname } from "next/navigation";
 import { NavigationMenuContent, NavigationMenuTrigger } from "@radix-ui/react-navigation-menu";
 import { ChevronUp } from "lucide-react"
 import { set } from "zod";
+import { Button } from "@/components/ui/button";
+import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
+import { toggleDarkMode } from "@/lib/store/slices/uiSlice";
+import DarkModeToggle from "./DarkModeToggle";
 
 
 const components: { title: string; href: string; description: string }[] = [
@@ -65,13 +69,14 @@ export default function HeaderNavClient({
     const pathname = usePathname();
     const isHomePage = pathname === "/";
     const linkColor = isHomePage ? "text-white" : "text-black";
-
-
     return (
         <NavigationMenu>
             <NavigationMenuList>
                 {!isAdmin && isAuthenticated && (
                     <>
+                        <NavItem>
+                            <DarkModeToggle />
+                        </NavItem>
                         <NavItem className={linkColor} href="/">Home</NavItem>
                         <NavItemSelected className={linkColor} href="/topics">Topics</NavItemSelected>
                         <NavItem className={linkColor} href="/post">Post</NavItem>
@@ -97,14 +102,14 @@ export default function HeaderNavClient({
     );
 }
 
-function NavItem({ href, children, className }: { href: string; children: React.ReactNode; className?: string }) {
+function NavItem({ href, children, className }: { href?: string; children: React.ReactNode; className?: string }) {
     return (
         <NavigationMenuItem>
             <NavigationMenuLink
                 asChild
                 className={`font-medium cursor-pointer ${className || ""}`}
             >
-                <Link href={href}>{children}</Link>
+                <Link href={href || "#"}>{children}</Link>
             </NavigationMenuLink>
         </NavigationMenuItem>
     );
@@ -114,13 +119,13 @@ function NavItemSelected({ href, children, className }: { href: string; children
     const [isUp, setIsUp] = useState(false);
     return (
         <NavigationMenuItem>
-            <NavigationMenuTrigger 
-            onMouseLeave={() => {
-                setIsUp(false);
-            }}
-            onMouseOver={() => {
-                setIsUp(true);
-            }} className={`font-medium cursor-pointer ${className || ""}`}>
+            <NavigationMenuTrigger
+                onMouseLeave={() => {
+                    setIsUp(false);
+                }}
+                onMouseOver={() => {
+                    setIsUp(true);
+                }} className={`font-medium cursor-pointer ${className || ""}`}>
                 <div className="flex items-center gap-1">
                     {children}
                     <ChevronUp className={`size-4 transition-transform duration-300 ${isUp ? 'rotate-0' : 'rotate-180'}`} />

@@ -5,7 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { postSchema, PostFormValues } from "./post.schema";
 import { Editor } from "@tinymce/tinymce-react";
 import { useEffect } from "react";
-import { createPostFromClient } from "@/services/post.service";
+import { createPostFromClient } from "@/services/post/post-client.service";
+import { uploadMedia } from "@/services/media/media-client.service";
 
 export default function PostForm({ user }: { user: any }) {
   const {
@@ -68,6 +69,28 @@ export default function PostForm({ user }: { user: any }) {
               apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
               value={field.value}
               onEditorChange={field.onChange}
+              init={{
+                height: 500,
+                menubar: true,
+                plugins: [
+                  'advlist', 'autolink', 'lists', 'link', 'image',
+                  'charmap', 'preview', 'anchor', 'searchreplace',
+                  'visualblocks', 'code', 'fullscreen', 'insertdatetime',
+                  'media', 'table', 'help', 'wordcount',
+                ],
+                toolbar:
+                  'undo redo | formatselect | bold italic backcolor | ' +
+                  'alignleft aligncenter alignright alignjustify | ' +
+                  'bullist numlist outdent indent | image | removeformat | help',
+
+                image_title: true,
+                automatic_uploads: true,
+                file_picker_types: 'image',
+
+                images_upload_handler: async (blobInfo: any) => {
+                  return await uploadMedia(blobInfo.blob());
+                },
+              }}
             />
           )}
         />

@@ -1,0 +1,23 @@
+.latest-post-list {
+  list-style: none;
+  padding: 0;
+  width: 80%;
+}
+
+.latest-post-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.latest-post-title {
+  margin: 0 0 8px;
+}
+
+.latest-post-title a {
+  text-decoration: none;
+  color: #111;
+}
+
+.latest-post-title a:hover {
+  text-decoration: underline;
+}

@@ -47,11 +47,8 @@ export default function CommentForm({ user, postId }: Props) {
         if (res.ok) {
             reset();
             router.refresh();
-            console.log("Comment added successfully");
         }
     };
-
-
 
     return (
         <form className="comment-form" onSubmit={handleSubmit(onSubmit)}>

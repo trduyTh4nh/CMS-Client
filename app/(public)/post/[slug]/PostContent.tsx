@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import "./post-content.css";
-import { updateViewCount } from "@/services/post.service";
+import { updateViewCount } from "@/services/post/post-client.service";
 
 type Props = {
     content: string;

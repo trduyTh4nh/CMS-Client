@@ -1,4 +1,4 @@
-import { getAllPosts } from "@/services/post.service";
+import { getAllPosts } from "@/services/post/post-sever.service";
 import "./post-management.css";
 
 export default async function PostList() {

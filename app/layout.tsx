@@ -1,7 +1,9 @@
-// app/layout.tsx - ROOT LAYOUT (mới)
+// app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import StoreProvider from "@/lib/store/StoreProvider";
+import ThemeSync from "@/widget/components/ThemeSync";
 
 export const sharpGrotesk = localFont({
     src: [
@@ -50,10 +52,23 @@ export default function RootLayout({
             suppressHydrationWarning
             lang="en"
         >
+            <head>
+                {
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();`,
+                        }}
+                    />
+                }
+
+            </head>
             <body
                 className={sharpGrotesk.className}
             >
-                {children}
+                <StoreProvider>
+                    <ThemeSync />
+                    {children}
+                </StoreProvider>
             </body>
         </html>
     );

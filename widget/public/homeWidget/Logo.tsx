@@ -24,7 +24,3 @@ const Logo = ({ className }: LogoProps) => {
 }
 
 export default Logo;
-
-function useRoute() {
-    throw new Error("Function not implemented.");
-}

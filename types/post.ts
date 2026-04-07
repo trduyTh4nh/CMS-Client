@@ -1,7 +1,10 @@
+import { Media } from "./media";
+import { User } from "./user";
+
 export enum PostStatus {
   DRAFT = "draft",
   PUBLISHED = "published",
-  ARCHIVED = "archived"
+  ARCHIVED = "archived",
 }
 
 export interface Post {
@@ -15,6 +18,8 @@ export interface Post {
   vote_count: number;
   created_at: Date;
   updated_at: Date;
+  user: User;
+  medias?: Media[];
 }
 
 export interface PostResponse {
