@@ -18,6 +18,7 @@ export interface Post {
   vote_count: number;
   created_at: Date;
   updated_at: Date;
+  thumbnail: string;
   user: User;
   medias?: Media[];
 }
@@ -27,4 +28,16 @@ export interface PostResponse {
   statusCode: number;
   reasonStatus: string;
   metadata: Post[];
+}
+
+export interface PostResponsePagination {
+  message: string;
+  statusCode: number;
+  reasonStatus: string;
+  metadata: {
+    total: number;
+    page: number;
+    limit: number;
+    posts: Post[];
+  };
 }

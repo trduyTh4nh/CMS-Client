@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { getUser } from "@/lib/auth";
 import Header from "@/widget/public/homeWidget/Header";
+import Footer from "@/widget/public/homeWidget/Footer";
 
 export const metadata: Metadata = {
   title: "Devforge",
@@ -21,6 +22,7 @@ export default async function PublicLayout({
       <main className="flex-1">
         {children}
       </main>
+      <Footer />
     </div>
   );
 }

@@ -3,7 +3,9 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
+    const body = await req.formData();
+
+    console.log("body: ", body);
 
     const token = (await cookies()).get("access_token")?.value;
 
@@ -14,10 +16,9 @@ export async function POST(req: Request) {
     const res = await fetch(`${process.env.BACKEND_URL}/post`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(body),
+      body: body,
     });
 
     const data = await res.json();
@@ -27,7 +28,7 @@ export async function POST(req: Request) {
     console.error("Post API Error:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

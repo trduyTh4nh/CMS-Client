@@ -10,6 +10,14 @@ export const postSchema = z.object({
   status: z.enum(["DRAFT", "PUBLISHED"]),
   author_id: z.string().uuid(),
   convert_url: z.string().nullable(),
+  tags: z.array(z.string()).optional(),
+  thumbnail: z
+    .custom<FileList>((val) => val instanceof FileList || val === undefined)
+    .optional(),
 });
 
-export type PostFormValues = z.infer<typeof postSchema>;
+// Input type: what the form fields hold (used with useForm<>
+export type PostFormValues = z.input<typeof postSchema>;
+
+// Output type: what onSubmit receives after Zod transforms (e.g. FileList → File | null)
+export type PostFormOutput = z.output<typeof postSchema>;

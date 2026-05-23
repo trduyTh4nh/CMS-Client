@@ -9,20 +9,17 @@ export default async function Page({
 }: {
     params: { slug: string };
 }) {
-
     const { slug } = await params;
-
     const postDetail = await getPostBySlug(slug);
-
+    console.log("postDetail: ", postDetail)
     if (!postDetail) {
         return <div>Post not found</div>;
     }
-
     return (
         <main className="post-detail">
             <article className="post-main">
                 <h1 className="text-4xl font-bold">{postDetail.title}</h1>
-                <img src={postDetail.medias?.[0]?.url} alt={postDetail.title} />
+                <img src={postDetail.thumbnail} alt={postDetail.title} />
 
                 <div className="post-meta">
                     <span>Views: {postDetail.view_count}</span>

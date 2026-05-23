@@ -1,16 +1,27 @@
 "use client"
+import { getListPostFollowingTopic } from "@/services/post/post-client.service"
 import { Post } from "@/types/post"
 import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 
 type Props = {
     featurePosts: Post[]
 }
 export default function FeaturePost({ featurePosts }: Props) {
+
+    const fetchFeaturePost = async () => {
+        const data = await getListPostFollowingTopic()
+        console.log("data: ", data)
+    }
+
+    useEffect(() => {
+        fetchFeaturePost()
+    }, [])
     const route = useRouter()
     return (
         <div className="flex gap-4 flex-wrap">
-            {featurePosts.map((post) => (
+            {featurePosts?.map((post) => (
                 <div
                     onClick={() => route.push(`/post/${post.slug}`)}
                     key={post.id}

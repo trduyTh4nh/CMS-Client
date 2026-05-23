@@ -1,6 +1,6 @@
 import { getToken, getUser } from "@/lib/auth";
 import { serverFetcher } from "@/lib/serverFetcher";
-import { Post, PostResponse } from "@/types/post";
+import { Post, PostResponse, PostResponsePagination } from "@/types/post";
 import { Topic } from "@/types/topic";
 import { redirect } from "next/navigation";
 
@@ -11,29 +11,60 @@ import { redirect } from "next/navigation";
 export async function getPosts(
   type?: string,
   keyword?: string,
-): Promise<PostResponse["metadata"]> {
+  offset?: number,
+  limit?: number,
+) {
   switch (type) {
     case "tag":
-      return getPostsByTag(keyword || "");
+      return getPostsByTag(keyword || "", offset, limit);
     default:
-      return getAllPosts();
+      return getAllPosts(offset, limit);
   }
 }
 
-export async function getAllPosts(): Promise<PostResponse["metadata"]> {
-  const data = await serverFetcher<PostResponse>("/post", {
-    cache: "no-cache",
-  });
+export async function getPostManagement(offset?: number, limit?: number) {
+  const params = new URLSearchParams();
+  if (offset) params.set("offset", offset.toString());
+  if (limit) params.set("limit", limit.toString());
 
+  const data = await serverFetcher<PostResponsePagination>(
+    `/post/management?${params.toString()}`,
+    {
+      cache: "no-cache",
+    },
+  );
+  return data.metadata;
+}
+
+export async function getAllPosts(offset?: number, limit?: number) {
+  const params = new URLSearchParams();
+  if (offset) params.set("offset", offset.toString());
+  if (limit) params.set("limit", limit.toString());
+
+  const data = await serverFetcher<PostResponsePagination>(
+    `/post?${params.toString()}`,
+    {
+      cache: "no-cache",
+    },
+  );
   return data.metadata;
 }
 
 export async function getPostsByTag(
   tagId: string,
-): Promise<PostResponse["metadata"]> {
-  const data = await serverFetcher<PostResponse>(`/post/tag/${tagId}`, {
-    cache: "no-cache",
-  });
+  offset?: number,
+  limit?: number,
+) {
+  const params = new URLSearchParams();
+  if (offset) params.set("offset", offset.toString());
+  if (limit) params.set("limit", limit.toString());
+
+  const data = await serverFetcher<PostResponsePagination>(
+    `/post/tag/${tagId}?${params.toString()}`,
+    {
+      cache: "no-cache",
+    },
+  );
 
   return data.metadata;
 }

@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 
 import "./comment.css"
 import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 
 
 type Props = {
@@ -54,13 +56,13 @@ export default function CommentForm({ user, postId }: Props) {
         <form className="comment-form" onSubmit={handleSubmit(onSubmit)}>
             <h3>Leave a comment</h3>
 
-            <label>
+            <label className="w-full flex flex-col" >
                 Comment
-                <textarea rows={4} {...register("content")} />
-                {errors.content && <p>{errors.content.message}</p>}
+                <Textarea className="w-full border border-gray-300 rounded-md p-2" rows={4} {...register("content")} />
+                {errors.content && <p className="text-red-500">{errors.content.message}</p>}
             </label>
 
-            <button type="submit">Post Comment</button>
+            <Button type="submit">Post Comment</Button>
         </form>
     );
 }

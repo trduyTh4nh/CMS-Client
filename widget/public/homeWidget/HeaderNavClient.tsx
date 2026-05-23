@@ -7,78 +7,42 @@ import {
     NavigationMenuList,
     NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { NavigationMenuContent, NavigationMenuTrigger } from "@radix-ui/react-navigation-menu";
 import { ChevronUp } from "lucide-react"
-import { set } from "zod";
-import { Button } from "@/components/ui/button";
-import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
-import { toggleDarkMode } from "@/lib/store/slices/uiSlice";
 import DarkModeToggle from "./DarkModeToggle";
+import { Topic } from "@/types/topic";
 
-
-const components: { title: string; href: string; description: string }[] = [
-    {
-        title: "Alert Dialog",
-        href: "/docs/primitives/alert-dialog",
-        description:
-            "A modal dialog that interrupts the user with important content and expects a response.",
-    },
-    {
-        title: "Hover Card",
-        href: "/docs/primitives/hover-card",
-        description:
-            "For sighted users to preview content available behind a link.",
-    },
-    {
-        title: "Progress",
-        href: "/docs/primitives/progress",
-        description:
-            "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-    },
-    {
-        title: "Scroll-area",
-        href: "/docs/primitives/scroll-area",
-        description: "Visually or semantically separates content.",
-    },
-    {
-        title: "Tabs",
-        href: "/docs/primitives/tabs",
-        description:
-            "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    },
-    {
-        title: "Tooltip",
-        href: "/docs/primitives/tooltip",
-        description:
-            "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-    },
-]
+type Props = {
+    isAdmin: boolean;
+    isAuthenticated: boolean;
+    topics: Topic[];
+    scrolled: boolean;
+}
 
 
 export default function HeaderNavClient({
     isAdmin,
     isAuthenticated,
-}: {
-    isAdmin: boolean;
-    isAuthenticated: boolean;
-}) {
+    topics,
+    scrolled
+}: Props) {
 
     const pathname = usePathname();
     const isHomePage = pathname === "/";
-    const linkColor = isHomePage ? "text-white" : "text-black";
+    const linkColor = isHomePage ? (scrolled ? "text-black" : "text-white") : "text-black";
+
     return (
-        <NavigationMenu>
-            <NavigationMenuList>
+        <NavigationMenu >
+            <NavigationMenuList >
                 {!isAdmin && isAuthenticated && (
                     <>
-                        <NavItem>
+                        <NavItem >
                             <DarkModeToggle />
                         </NavItem>
                         <NavItem className={linkColor} href="/">Home</NavItem>
-                        <NavItemSelected className={linkColor} href="/topics">Topics</NavItemSelected>
+                        <NavItemSelected className={linkColor} topics={topics} href="/topics">Topics</NavItemSelected>
                         <NavItem className={linkColor} href="/post">Post</NavItem>
                         <NavItem className={linkColor} href="/qanda">Q&A</NavItem>
                     </>
@@ -115,7 +79,7 @@ function NavItem({ href, children, className }: { href?: string; children: React
     );
 }
 
-function NavItemSelected({ href, children, className }: { href: string; children: React.ReactNode; className?: string }) {
+function NavItemSelected({ href, children, className, topics }: { href: string; children: React.ReactNode; className?: string, topics: Topic[] }) {
     const [isUp, setIsUp] = useState(false);
     return (
         <NavigationMenuItem>
@@ -133,13 +97,13 @@ function NavItemSelected({ href, children, className }: { href: string; children
             </NavigationMenuTrigger>
             <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    {components.map((component) => (
+                    {topics.map((topic: Topic) => (
                         <ListItem
-                            key={component.title}
-                            title={component.title}
-                            href={component.href}
+                            key={topic.id}
+                            title={topic.name}
+                            href={`/topic/${topic.slug}`}
                         >
-                            {component.description}
+                            {topic.description}
                         </ListItem>
                     ))}
                 </ul>

@@ -1,8 +1,25 @@
-import { getAllPosts } from "@/services/post/post-sever.service";
+import { getAllPosts, getPostManagement, getPosts } from "@/services/post/post-sever.service";
 import "./post-management.css";
+import PaginationComp from "@/widget/public/common/Pagination";
+import { Button } from "@/components/ui/button";
 
-export default async function PostList() {
-    const posts = await getAllPosts();
+type Props = {
+    searchParams?: {
+        page?: string | 0;
+        limit?: string | 100;
+    };
+}
+
+export default async function PostList({ searchParams }: Props) {
+    const params = searchParams;
+
+    const page = Math.max(1, Number(params?.page) || 1);
+    const limit = Number(params?.limit) || 100;
+    const offset = (page - 1) * limit;
+
+    const posts = await getPostManagement(offset, limit);
+
+    const totalPage = Math.ceil(posts.total / posts.limit);
 
     return (
         <table className="post-table">
@@ -16,7 +33,7 @@ export default async function PostList() {
             </thead>
 
             <tbody className="">
-                {posts.map((post) => (
+                {posts.posts.map((post) => (
                     <tr key={post.id}>
                         <td >{post.title}</td>
 
@@ -29,7 +46,7 @@ export default async function PostList() {
                         <td>{post.view_count}</td>
 
                         <td className="">
-                            <button className="btn btn-edit bg-green-600 rounded-2xl">Publish</button>
+                            <Button className="btn btn-edit bg-green-600 rounded-2xl">Publish</Button>
                         </td>
                     </tr>
                 ))}

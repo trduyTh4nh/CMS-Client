@@ -1,27 +1,14 @@
-// Header.tsx (SERVER COMPONENT)
-import HeaderNavClient from "./HeaderNavClient";
-import Logo from "./Logo";
+import { getAllTopic } from "@/services/topic/topic-sever.service";
+import HeaderClient from "./HeaderClient";
 
-export default function Header({
-  user,
-  headerType,
-}: {
-  user: any;
-  headerType?: string;
-}) {
-  const isAdmin = headerType === "admin";
-  const isAuthenticated = !!user;
-
+export default async function Header({ user, headerType }: any) {
+  const topics = await getAllTopic();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-8 py-6 flex items-center justify-between glass">
-
-      <Logo />
-      <HeaderNavClient
-        isAdmin={isAdmin}
-        isAuthenticated={isAuthenticated}
-      // role={user?.role}
-      />
-    </header>
+    <HeaderClient
+      topics={topics}
+      user={user}
+      headerType={headerType}
+    />
   );
 }

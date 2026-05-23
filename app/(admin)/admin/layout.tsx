@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "@/app/globals.css";
 import { getUser } from "@/lib/auth";
 import AdminGuard from "@/widget/adminWidget/AdminGuard";
 import Header from "@/widget/public/homeWidget/Header";

@@ -1,5 +1,6 @@
 
 "use client";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 const BannerPage = () => {
@@ -47,7 +48,7 @@ const BannerPage = () => {
                     placeholder="Banner URL"
                     className="border p-2 w-full mb-4"
                 />
-                <button type="submit" className="bg-blue-500 text-white p-2 rounded">Add Banner</button>
+                <Button type="submit" className="bg-blue-500 text-white p-2 rounded">Add Banner</Button>
             </form>
         </div>)
 };

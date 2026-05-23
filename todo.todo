@@ -10,13 +10,15 @@ Project: CMS-Client
     ☐ Create page show when error popup
     ☐ Tạo common handle return exception with format 
 
-    ☐ re-make sample ui
-    ☐ get all tag category
+    ✔ re-make sample ui @done(26-04-11 19:20)
+    ✔ get all tag category @done(26-04-11 19:20)
 
 // NEW
 2. Home 
-    ☐ Create home page following the design (mockup\home.excalidraw)
-    ☐ Refactor các function service, create 1 http riêng để config request không dùng fetch ở mỗi file (services\post.ts)...
-    ☐ Design api for home page + design UI for Q and A page
-    ☐ Setup S3
-        Refer this link: https://viblo.asia/p/setup-boilerplate-cho-du-an-nestjs-phan-11-upload-public-file-tu-co-ban-toi-toi-uu-voi-aws-sdk-v3-va-ataws-sdklib-storage-aNj4vx3OL6r
+    ✔ Create home page following the design (mockup\home.excalidraw) @done(26-04-11 19:20)
+    ✔ Refactor các function service, create 1 http riêng để config request không dùng fetch ở mỗi file (services\post.ts)...
+    ✔ Design api for home page + design UI for Q and A page @done(26-04-11 19:20)
+    ✔ Setup S3 @done(26-04-11 19:20)
+        Refer this link: https://viblo.asia/p/setup-boilerplate-cho-du-an-nestjs-phan-11-upload-public-file-tu-co-ban-toi-toi-uu-voi-aws-sdk-v3-va-ataws-sdklib-storage-aNj4vx3OL6r'
+    ✔ Post pagination @done(26-04-11 21:06)
+    ✔ Create post with tag and thumbnail @done(26-04-16 19:40)
